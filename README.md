@@ -5,8 +5,9 @@
 
 <p>The goal of this project is make a simple DIY soudboard</p>
 
----
-## Hardware Setup
-- ESP32-C3 Super Mini
-- 3x Push Button
-- 3x Ressistor (2x 22K\(\Omega \), 10K\(\Omega \))
+<hr>
+<h2>Hardware Setup</h2>
+<li>ESP32-C3 Super Mini</li>
+<li>3x Push Button</li>
+<li>3x Ressistor (2x 22KΩ, 10KΩ)</li>
+<li>24AWG Wire</li>
