@@ -1,6 +1,5 @@
 ## "SoudBoard"
-(.\Images\Miku's Halo.webp)
-The goal of this project is
+The goal of this project is make a simple DIY soudboard (.\Images\Miku's Halo.webp)
 
 ---
 ## Hardware Setup
