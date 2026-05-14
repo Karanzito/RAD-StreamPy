@@ -1,7 +1,8 @@
-## "SoudBoard"
-<center>
+<h1> "SoudBoard" <h1/>
+<p align="center">
   <img src="your-image-url.jpg", alt="Miku-Halo.webpg">
-</center>
+<p/>
+
 The goal of this project is make a simple DIY soudboard
 
 ---
