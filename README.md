@@ -1,5 +1,7 @@
 ## "SoudBoard"
-![cover image](./Images/Miku-Halo.webp)
+<center>
+  <img src="your-image-url.jpg">
+</center>
 The goal of this project is make a simple DIY soudboard
 
 ---
