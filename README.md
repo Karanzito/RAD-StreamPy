@@ -1,9 +1,9 @@
-<h1> "SoudBoard" <h1/>
-<p align="center">
-  <img src="your-image-url.jpg", alt="Miku-Halo.webpg">
-<p/>
+<h1 align='center'> "SoudBoard" </h1>
+<p align='center'>
+  <img src="./Images/Miku-Halo.webp", alt="Miku-Halo.webpg">
+</p>
 
-The goal of this project is make a simple DIY soudboard
+<p>The goal of this project is make a simple DIY soudboard</p>
 
 ---
 ## Hardware Setup
