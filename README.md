@@ -1,5 +1,5 @@
 ## "SoudBoard"
-![cover image](.\Images\Miku's Halo.webp)
+![cover image](./Images/Miku-Halo.webp)
 The goal of this project is make a simple DIY soudboard
 
 ---
