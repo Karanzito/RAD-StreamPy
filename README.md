@@ -10,4 +10,4 @@
 <li>ESP32-C3 Super Mini</li>
 <li>3x Push Button</li>
 <li>3x Ressistor (2x 22KΩ, 10KΩ)</li>
-<li>24AWG Wire</li>
+<li>28AWG Wire</li>
