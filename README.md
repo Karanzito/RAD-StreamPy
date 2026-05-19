@@ -3,11 +3,16 @@
   <img src="./Images/Miku-Halo.webp", alt="Miku-Halo.webp">
 </p>
 
-<p>The goal of this project is make a simple DIY soudboard</p>
+<p>
+The goal of this project is make a multifunction painel control(like stream deck). 
+Connected a DIY soundboard utilizing ESP32
+</p>
 
 <hr>
-<h2>Hardware Setup</h2>
-<li>ESP32-C3 Super Mini</li>
-<li>3x Push Button</li>
-<li>3x Ressistor (2x 22KΩ, 10KΩ)</li>
-<li>28AWG Wire</li>
+<h2>This project utilize:</h2>
+<ul>
+  <h3>Software:</h3>
+  <ln>Python3.14.3</ln>
+  <h3>Hardware:</h3>
+  <ln>ESP32</ln>
+</ul>
