@@ -1,2 +1,5 @@
-pyserial == 3.5
-pyinstaller == 6.20.0
+pyserial==3.5
+pyinstaller==6.20.0
+dearpygui==2.3.1
+threading
+playsound
