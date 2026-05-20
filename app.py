@@ -1,7 +1,7 @@
 import dearpygui.dearpygui as dpg
 import os
 import ctypes
-from playsound import playsound
+from playsound3 import playsound3
 import threading
 
 ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID("ControlPainel.Soudboard.1.0") # prevents generic python icon in the taskbar
@@ -12,7 +12,7 @@ sounds = [f'{os.path.join('souds', 'gawr-gura.mp3')}']
 
 def play_sound(sender, app_data, user_data):
     threading.Thread( # separar em thread para não congelar ui
-        target=playsound,
+        target=playsound3,
         args=(user_data,),
         daemon=True
     ).start()
