@@ -1,0 +1,28 @@
+{
+  "buttons": [
+    {
+      "id": 1,
+      "label": "A.",
+      "sound": "sounds/gawr-gura.mp3",
+      "color": "#D91800"
+    },
+    {
+      "id": 2,
+      "label": "Notepad ++",
+      "app": "C:\\ProgramData\\Microsoft\\Windows\\Start Menu\\Programs\\Notepad++.lnk",
+      "color": "#0059A1"
+    },
+    {
+      "id": 3,
+      "label": "Bloco De Notas",
+      "app": "C:\\Program Files\\WindowsApps\\Microsoft.WindowsNotepad_11.2604.5.0_x64__8wekyb3d8bbwe\\Notepad\\Notepad.exe",
+      "color": "#ADD8E6"
+    },
+    {
+      "id": 4,
+      "label": "peixe",
+      "url": "https://www.youtube.com/watch?v=haJfJAwpViI",
+      "color": "#1DA1F2"
+    }
+  ]
+}
