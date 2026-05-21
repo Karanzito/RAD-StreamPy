@@ -1,18 +1,11 @@
-<h1 align='center'>"SoudBoard"</h1>
+<h1 align='center'>StreamPy</h1>
 <p align='center'>
   <img src="./Images/Miku-Halo.webp", alt="Miku-Halo.webp">
 </p>
 
+<h2>Overview</h2>
 <p>
-The goal of this project is make a multifunction painel control(like stream deck). 
-Connected a DIY soundboard utilizing ESP32
+A multifunction desktop control panel inspired by devices like the Stream Deck, built using an ESP32 and Python.
+Originally designed as a DIY soundboard, the project evolved into a programmable productivity and workflow automation tool capable of controlling applications, executing macros, managing media, and triggering custom actions through physical buttons.
+The system combines hardware and software integration to provide a low-cost and customizable control interface for streamers, productivity workflows, and multimedia application
 </p>
-
-<hr>
-<h2>This project utilize:</h2>
-<ul>
-  <h3>Software:</h3>
-  <ln>Python3.14.3</ln>
-  <h3>Hardware:</h3>
-  <ln>ESP32</ln>
-</ul>
