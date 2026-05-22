@@ -1,11 +1,11 @@
 altgraph==0.17.5
-dearpygui==2.3.1
+customtkinter==5.2.2
+darkdetect==0.8.0
 packaging==26.2
 pefile==2024.8.26
-playsound3==3.3.1
+pillow==12.2.0
+pygame-ce==2.5.7
 pyinstaller==6.20.0
 pyinstaller-hooks-contrib==2026.5
 pyserial==3.5
-pywin32==311
 pywin32-ctypes==0.2.3
-setuptools==82.0.1

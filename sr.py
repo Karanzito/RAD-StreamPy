@@ -1,7 +1,7 @@
 import serial
 import serial.tools.list_ports
 import asyncio
-from playsound3 import playsound
+# from playsound3 import playsound # DEPRICATED!
 
 # # Connect your ESP32(or Arduino) and insert their port:
 # Port = "COM5"
@@ -46,7 +46,8 @@ def Main():
             print(f"> {line}") # print line in the console, for testing
 
         if line == 'BTN_1':
-            playsound(r'C:\Dev\VisualStudio\VisualStudioCode\Projetos\Py\Pessoal\SoundBoard\Project\sounds\gawr-gura.mp3')
+            # playsound(r'.\sounds\gawr-gura.mp3') # test button input
+            print("soud played!")
 
 
 if __name__ == '__main__':
