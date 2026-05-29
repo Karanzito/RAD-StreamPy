@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <link type="icon" href=".\Images\Miku-Halo.ico"> 
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="style.css">
+        <title>StreamPy</title>
+         <!-- PyScript CSS -->
+        <link rel="stylesheet" 
+            href="https://pyscript.net/releases/2024.3.1/core.css">
+        <!-- This script tag bootstraps PyScript -->
+        <script type="module" 
+            src="https://pyscript.net/releases/2024.3.1/core.js"></script>
+    </head>
+    <py-script src="main.py"></py-script>
+    <py-script>print('index.html: hello world')</py-script>
+    <body>
+        <div class="logo-container">
+            <img 
+                id="main-logo"
+                src=".\Images\Miku-Halo.webp" 
+                alt="main-logo.webp">
+            <h1>StreamPy</h1>
+        </div>
+        <h2>Control Painel</h2>
+        <hr>
+        <div class="binded-buttons">
+            <button type="button" class=bind-buttons id="button_1">button_1</button>
+            <button type="button" class=bind-buttons id="button_2">button_2</button>
+            <button type="button" class=bind-buttons id="button_3">button_3</button>
+            <button type="button" class=bind-buttons id="button_4">button_4</button>
+        </div>
+    </body>
+</html>
