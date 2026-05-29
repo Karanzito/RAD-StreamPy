@@ -1,4 +1,4 @@
-![Python 3.14](https://shields.io)
+![Static Badge](https://img.shields.io/badge/Python-3.14-blue?logo=python&logoColor=white)
 
 <h1 align='center'>StreamPy</h1>
 <p align='center'>
