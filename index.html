@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
-    <link type="icon" href=".\Images\Miku-Halo.ico"> 
     <head>
         <meta charset="UTF-8">
+        <link rel="icon" type="image/x-icon" href=".\Images\Miku-Halo.ico"> 
         <link rel="stylesheet" href="style.css">
         <title>StreamPy</title>
          <!-- PyScript CSS -->
@@ -12,9 +12,18 @@
         <script type="module" 
             src="https://pyscript.net/releases/2024.3.1/core.js"></script>
     </head>
-    <py-script src="main.py"></py-script>
-    <py-script>print('index.html: hello world')</py-script>
     <body>
+        <py-config>
+            {
+                "packages": ["sqlite3"],
+                "files": {
+                    "persistent.py": "./persistent.py"
+                }
+            }
+        </py-config>
+        <script type="py" src="main.py"></script>
+        <script type="py">print('index.html: hello world')</script>
+
         <div class="logo-container">
             <img 
                 id="main-logo"
