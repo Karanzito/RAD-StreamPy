@@ -4,25 +4,23 @@
         <meta charset="UTF-8">
         <link rel="icon" type="image/x-icon" href=".\Images\Miku-Halo.ico"> 
         <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=edit_square" />
         <title>StreamPy</title>
-         <!-- PyScript CSS -->
-        <link rel="stylesheet" 
-            href="https://pyscript.net/releases/2024.3.1/core.css">
-        <!-- This script tag bootstraps PyScript -->
-        <script type="module" 
-            src="https://pyscript.net/releases/2024.3.1/core.js"></script>
+
+        <link rel="stylesheet" href="https://pyscript.net/releases/2024.3.1/core.css">
+        <script type="module" src="https://pyscript.net/releases/2024.3.1/core.js"></script>
     </head>
     <body>
-        <py-config>
-            {
-                "packages": ["sqlite3"],
-                "files": {
-                    "persistent.py": "./persistent.py"
-                }
-            }
-        </py-config>
-        <script type="py" src="main.py"></script>
-        <script type="py">print('index.html: hello world')</script>
+
+    <py-config>
+        {
+            "packages": []
+        }
+    </py-config>
+
+    <script type="py" src="main.py" defer></script>
+    
+    <script type="py">print('index.html: PyScript carregado e pronto!')</script>
 
         <div class="logo-container">
             <img 
@@ -31,7 +29,14 @@
                 alt="main-logo.webp">
             <h1>StreamPy</h1>
         </div>
-        <h2>Control Painel</h2>
+        <h2>
+            Control Painel   
+            <button type="button" class=control-button id="edit_bind_button">
+                <span class="material-symbols-outlined">
+                    edit_square
+                </span>
+            </button>
+        </h2>
         <hr>
         <div class="binded-buttons">
             <button type="button" class=bind-buttons id="button_1">button_1</button>

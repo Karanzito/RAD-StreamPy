@@ -29,21 +29,48 @@ hr {
     
 }
 
+button {
+    font-family: sans-serif;
+}
+
 .bind-buttons {
     display: inline-block;
     margin: 10px;
     justify-content: center;
     background-color: #09bcd3;
-    font-family: sans-serif;
     font-style: normal;
     font-size: 30px;
     aspect-ratio: 1 / 1;
     border-radius: 10px;
 }
 
+.control-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background-color: white;
+    color: black;
+
+    aspect-ratio: 1 / 1;
+    border: none;
+    outline: none;
+    border-radius: 50px;
+
+    padding: 5px;
+}
+
+.material-symbols-outlined {
+    font-size: 18px !important;
+}
+
+.control-button:hover {
+    background-color: #8c9cff;
+    transform: scale(1.05);
+}
+
 .bind-buttons:hover {
     background-color: #8c9cff;
-    transform: scale(1.0);
+    transform: scale(1.02);
 }
 
 div.logo-container {

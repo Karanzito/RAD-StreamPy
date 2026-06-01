@@ -1,16 +1,20 @@
 import sqlite3 as sql
+from flask import Flask
 import os
 
-DATABASE = os.path.join('Data', 'database.db')
+DATABASE = 'database.db'
+
+app = Flask(__name__)
 
 class DB:
     def __init__(self):
         buttons = 4
         self.buttons = buttons
 
-    def default_data(self):
+    def get_data(self):
 
         with sql.connect(DATABASE) as con:
+                print("connected.")
                 cur = con.cursor()
                 
                 cur.execute('SELECT * FROM DATA')
@@ -30,14 +34,13 @@ class DB:
                         "app": i[5]
                     })
 
-                print(f"data:\n {data}")
+        return data
 
-                return data
 
     def load_data(self):
     
         try:
-            data = self.default_data()
+            data = self.get_data()
 
             return data   
             
@@ -51,9 +54,11 @@ class DB:
 
             print(self.buttons)
 
-            self.main(buttons=self.buttons)
+            self.main(self.buttons)
 
-            data = self.default_data()
+            data = self.get_data()
+
+            return data
 
         except Exception as e:
             raise Exception(f'Exception in <load_data()>: {e}')
@@ -65,14 +70,14 @@ class DB:
             try:
                 cur = con.cursor()
 
-                values = ((label, sound, macro, url, app),)
+                values = ((label, sound, macro, url, app), id)
 
-                cur.execute("""UPDATE DATA SET (
+                cur.execute("""UPDATE DATA SET 
                         label = ?, 
                         sound = ?,  
                         macro = ?, 
                         url = ?, 
-                        app = ?)
+                        app = ?
                         WHERE id = ?""", values)
                 
                 con.commit()
@@ -83,9 +88,10 @@ class DB:
                 raise Exception(e)
 
 
-    def main(buttons):
+    def main(self, buttons):
 
         with sql.connect(DATABASE) as con:
+            print("<main> connected")
             cur = con.cursor()
 
             try:
@@ -114,7 +120,15 @@ class DB:
                 con.rollback()
 
                 raise Exception(f"Exception Creating TABLE <DATA>: {e}")
-            
+
+
+db = DB()
+
+@app.route("/data")
+def data():
+    return db.get_data()
+
+app.run(debug=True)
 print("hello world")
         
 if __name__ == '__main__':
