@@ -41,22 +41,18 @@ productivity workflows, and multimedia application
 <li>sqlite3</li>
 
 
-<!-- Conteudo pendente de revisão
-<h2>Possible Use Cases</h2>
-<li>Streaming control panel</li>
-<li>Productivity shortcuts</li>
-<li>OBS scene switching</li>
-<li>Soundboard</li>
-<li>Media controller</li>
-<li>Smart desktop automation</li>
-<li>Development workflow shortcuts</li> -->
-
 <h2>Setup</h2>
 <p>Clone the git reposity</p>
-`git clone https://github.com/Karanzito/StreamPy`
+```shell
+git clone https://github.com/Karanzito/StreamPy
+```
 
 <p>Create a python3.14 virtual environment</p>
-`python3.14 -m venv .venv`
+```shell
+python3.14 -m venv .venv
+```
 
-<p>Intall the requirements.txt</p>
-`pip install -r requirementx.txt`
+<p>Install the requirements.txt</p>
+```shell
+pip install -r requirementx.txt
+```
