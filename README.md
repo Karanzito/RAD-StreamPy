@@ -27,16 +27,19 @@ The system combines hardware and software integration to provide a low-cost and 
 productivity workflows, and multimedia application
 </p>
 
-<!-- Trecho sujeito a mudanças -->
 <h2>Architecture</h2>
+<h3>Hardware</h3>
+<li>ESP32</li>
+<h3>Front-end</h3>
+<li>HTML/CSS</li>
+<h3>API</h3>
+<li>Flask</li>
 <h3>Back-end</h3>
 <li>Python3.14</li>
-<li>ESP32-C3</li>
 <li>PySerial</li>
-<li>Pygame-mixer</li>
-<li>json</li>
-<h3>Front-end</h3>
-<li>customtkinter</li>
+<li>PyScript</li>
+<li>sqlite3</li>
+
 
 <!-- Conteudo pendente de revisão
 <h2>Possible Use Cases</h2>
@@ -57,6 +60,3 @@ productivity workflows, and multimedia application
 
 <p>Intall the requirements.txt</p>
 `pip install -r requirementx.txt`
-
-<p>if necessary try install the pipfreeze, for replicate my exact libs</p>
-`pip install -r pipfreeze.txt`

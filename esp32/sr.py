@@ -3,17 +3,28 @@ import serial.tools.list_ports
 import asyncio
 # from playsound3 import playsound # DEPRICATED!
 
-# # Connect your ESP32(or Arduino) and insert their port:
+# If the code can't find the correct COM port automaticily, you may want hardcode the correct port.
+# To use the hardcode method, connect your ESP32(or Arduino) and write their COM port above:
 # Port = "COM5"
 # Insert your baudrate here (default: 11500):
 Baudrate = 11500
 
 def connect_port():
+
+    try: # try hardcodded method
+        ser = serial.Serial(port=Port.device, baudrate=Baudrate, timeout=2) # type: ignore
+        print(f"using hardcoded serial port: {Port}") # type: ignore
+
+        return ser
+    
+    except (NameError, AttributeError):
+        pass # ignore the global Port and try automaticily search a avalible COM port
+    
     ports = serial.tools.list_ports.comports()
     print("Avalible Ports:")
 
     if not ports:
-        print("No avalible COM ports found.")
+        print("No avalible COM ports found.\n")
         return None
     
     for p in ports:
@@ -21,7 +32,9 @@ def connect_port():
 
         try:
 
-            ser = serial.Serial(port=p.device, baudrate=Baudrate, timeout=2)
+            port_device = p.device
+
+            ser = serial.Serial(port=port_device, baudrate=Baudrate, timeout=2)
 
             ser.write(b'connected!')
 
