@@ -41,19 +41,19 @@ O sistema integra hardware e software para fornercer uma solução de painel de 
 
 <h2>Instalação</h2>
 
-[!NOTE]
+
 Clone o repositorio git
 ```shell
 git clone https://github.com/Karanzito/StreamPy
 ```
 
-[!NOTE]
+
 Crie um python3.14 virtual environment
 ```shell
 python3.14 -m venv .venv
 ```
 
-[!NOTE]
+
 Instale as dependências com o requirements.txt
 ```shell
 pip install -r requirementx.txt
