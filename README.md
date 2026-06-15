@@ -42,17 +42,21 @@ productivity workflows, and multimedia application
 
 
 <h2>Setup</h2>
-<p>Clone the git reposity</p>
+
+[!NOTE]
+Clone the git reposity
 ```shell
 git clone https://github.com/Karanzito/StreamPy
 ```
 
-<p>Create a python3.14 virtual environment</p>
+[!NOTE]
+Create a python3.14 virtual environment
 ```shell
 python3.14 -m venv .venv
 ```
 
-<p>Install the requirements.txt</p>
+[!NOTE]
+Install the requirements.txt
 ```shell
 pip install -r requirementx.txt
 ```
