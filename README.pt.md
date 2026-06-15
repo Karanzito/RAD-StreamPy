@@ -8,7 +8,7 @@
 [ENGLISH](README.md) | [PORTUGUÊS]
 
 <h2>Funções</h2>
-<li>Boões Programaveis Customizáveis</li>
+<li>Botões Programáveis Customizáveis</li>
 <li>Execução de macros</li>
 <li>Controle de mídia e volume</li>
 <li>Suporte a Soundboard</li>
@@ -16,26 +16,28 @@
 <li>Automação de fluxo de trabalho</li>
 <li>Comunicação ESP32 + Python</li>
 <li>Leve e customizável</li>
-<li>Alternativa de baixo custo a paineis de controle comerciais</li>
+<li>Alternativa de baixo custo a painéis de controle comerciais</li>
 <hr>
 <h2>Visão Geral</h2>
 <p>
 StreamPy e um painel de controle desktop multifunção, inspirado por dispositivos como o Stream Deck. 
 Originalmente idealizado como uma DIY SoundBoard, o projeto evoluiu para uma ferramenta de automação de fluxo de trabalho/produtividade capaz de controlar outras aplicações,
 executar macros, gerenciar mídias, e acionar ações customizaveis atravez de botões físicos ou atalhos do teclado.
-O sistema integra hardware e software para fornercer uma solução de painel de controle baixo custo e customizável para streamers, fluxos de trabalho produtivos, aplicações multimedia etc.
+O sistema integra hardware e software para fornercer uma solução de painel de controle baixo custo e customizável para streamers, fluxos de trabalho produtivos, aplicações multimídia etc.
 </p>
 
-<!-- Trecho sujeito a mudanças -->
 <h2>Arquitetura</h2>
+<h3>Hardware</h3>
+<li>ESP32</li>
+<h3>Front-end</h3>
+<li>HTML/CSS</li>
+<h3>API</h3>
+<li>Flask</li>
 <h3>Back-end</h3>
 <li>Python3.14</li>
-<li>ESP32-C3</li>
 <li>PySerial</li>
-<li>Pygame-mixer</li>
-<li>json</li>
-<h3>Front-end</h3>
-<li>customtkinter</li>
+<li>PyScript</li>
+<li>sqlite3</li>
 
 <h2>Instalação</h2>
 <p>Clone o repositorio git</p>
@@ -46,6 +48,3 @@ O sistema integra hardware e software para fornercer uma solução de painel de 
 
 <p>Instale o requirements.txt</p>
 `pip install -r requirementx.txt`
-
-<p>Caso necessario, instale pipfreeze.txt para replicar as minhas configurações exatas</p>
-`pip install -r pipfreeze.txt`

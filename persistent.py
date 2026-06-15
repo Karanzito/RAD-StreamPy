@@ -1,141 +1,103 @@
 import sqlite3 as sql
-from flask import Flask
 import os
 
 DATABASE = 'database.db'
 
-app = Flask(__name__)
-
 class DB:
     def __init__(self):
-        buttons = 4
-        self.buttons = buttons
+        self.buttons = 4
 
     def get_data(self):
-
         with sql.connect(DATABASE) as con:
-                print("connected.")
-                cur = con.cursor()
-                
+
+            print("Connected to database.")
+            cur = con.cursor()
+            
+           
+            self.create_table_if_not_exists(cur)
+            
+            cur.execute('SELECT * FROM DATA')
+            row = cur.fetchall()
+            
+            
+            if not row:
+                self.populate_default_data(cur, con)
                 cur.execute('SELECT * FROM DATA')
                 row = cur.fetchall()
 
-                print(row)
-
-                data = []
-
-                for i in row:
-                    data.append({
-                        "id": i[0],
-                        "label": i[1],
-                        "sound": i[2],
-                        "macro": i[3],
-                        "url": i[4],
-                        "app": i[5]
-                    })
-
+            data = []
+            for i in row:
+                data.append({
+                    "id": i[0],
+                    "label": i[1],
+                    "sound": i[2],
+                    "macro": i[3],
+                    "url": i[4],
+                    "app": i[5]
+                })
         return data
 
+    def create_table_if_not_exists(self, cur):
 
-    def load_data(self):
-    
-        try:
-            data = self.get_data()
+        command = """CREATE TABLE IF NOT EXISTS DATA (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        label TEXT UNIQUE,
+        sound TEXT DEFAULT 'NONE',
+        macro TEXT DEFAULT 'NONE',
+        url TEXT DEFAULT 'NONE',
+        app TEXT DEFAULT 'NONE')"""
 
-            return data   
-            
-        except sql.OperationalError as e:
-            
-            if 'no such table' in str(e):
-                print(f'Table <DATA> not found\ncreating default table...')
+        cur.execute(command)
 
-            else:
-                print(f'Error: {e}\nrestoring default table...')
+    def populate_default_data(self, cur, con):
 
-            print(self.buttons)
+        print("populate defaults.")
+        values = [(f'button_{b}',) for b in range(1, self.buttons + 1)]
+        default_insert = f"""INSERT OR IGNORE INTO DATA (label) VALUES (?)"""
 
-            self.main(self.buttons)
+        cur.executemany(default_insert, values)
+        con.commit()
 
-            data = self.get_data()
-
-            return data
-
-        except Exception as e:
-            raise Exception(f'Exception in <load_data()>: {e}')
-    
-    def save_bind(self, id, label, sound, macro, url, app):
-
+    def save_data(self, data):
         with sql.connect(DATABASE) as con:
-
-            try:
-                cur = con.cursor()
-
-                values = ((label, sound, macro, url, app), id)
-
-                cur.execute("""UPDATE DATA SET 
-                        label = ?, 
-                        sound = ?,  
-                        macro = ?, 
-                        url = ?, 
-                        app = ?
-                        WHERE id = ?""", values)
-                
-                con.commit()
-
-            except Exception as e:
-                con.rollback()
-
-                raise Exception(e)
-
-
-    def main(self, buttons):
-
-        with sql.connect(DATABASE) as con:
-            print("<main> connected")
             cur = con.cursor()
 
-            try:
+            cmd = """
+            UPDATE DATA 
+            SET sound = ?, 
+                macro = ?, 
+                url = ?, 
+                app = ? 
+            WHERE id = ?
+            """
 
-                command = """CREATE TABLE IF NOT EXISTS DATA (
-                id INTEGER PRIMARY KEY AUTOINCREMENT,
-                label TEXT UNIQUE,
-                sound TEXT DEFAULT 'NONE',
-                macro TEXT DEFAULT 'NONE',
-                url TEXT DEFAULT 'NONE',
-                app TEXT DEFAULT 'NONE')"""
+            for item in data:
+                row_id = item.get("id")
+                if row_id is None:
+                    print(f"Warning: Skipping item because it lacks an 'id' key: {item}")
+                    continue
 
-                cur.execute(command)
+                params = (
+                    item.get("sound", ""),
+                    item.get("macro", ""),
+                    item.get("url", ""),
+                    item.get("app", ""),
+                    row_id
+                )
 
-                values = [(f'button_{b}',) for b in range(1, buttons + 1)]
+                cur.execute(cmd, params)
 
-                print(f'values = {values}')
+            con.commit()
 
-                default_insert = f"""INSERT INTO DATA (label) VALUES (?)"""
 
-                cur.executemany(default_insert, values)
 
-                con.commit()
-
-            except Exception as e:
-                con.rollback()
-
-                raise Exception(f"Exception Creating TABLE <DATA>: {e}")
 
 
 db = DB()
-
-@app.route("/data")
-def data():
-    return db.get_data()
-
-app.run(debug=True)
-print("hello world")
         
 if __name__ == '__main__':
     self = DB()
     buttons = DB().buttons
     print(buttons, type(buttons))
-
-    # self.main(buttons)
 
     self.load_data()

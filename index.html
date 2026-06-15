@@ -10,8 +10,13 @@
         <link rel="stylesheet" href="https://pyscript.net/releases/2024.3.1/core.css">
         <script type="module" src="https://pyscript.net/releases/2024.3.1/core.js"></script>
     </head>
+    <div id="edit_tab" style="display:none; border:1px solid #ccc; padding:10px;">
+        <h3 id="edit_tab">Edit Buttons</h3>
+        <div id="edit_content"></div>
+        <button class="edit-buttons" id="save_edit">Save</button>
+        <button class="edit-buttons" id="close_edit">Close</button>
+    </div>
     <body>
-
     <py-config>
         {
             "packages": []

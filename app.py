@@ -1,73 +1,43 @@
-import sqlite3 as sql
 import os
-from flask import Flask, jsonify
+from flask import Flask, jsonify, send_from_directory, request
+from flask_cors import CORS
 
-DATABASE = 'database.db'
-app = Flask(__name__)
+from persistent import DB 
 
-class DB:
-    def __init__(self):
-        self.buttons = 4
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
-    def get_data(self):
-        with sql.connect(DATABASE) as con:
-            print("Connected to database.")
-            cur = con.cursor()
-            
-            # Garante que a tabela existe antes de tentar ler
-            self.create_table_if_not_exists(cur)
-            
-            cur.execute('SELECT * FROM DATA')
-            row = cur.fetchall()
-            
-            # Se a tabela foi criada agora e está vazia, popula ela
-            if not row:
-                self.populate_default_data(cur, con)
-                cur.execute('SELECT * FROM DATA')
-                row = cur.fetchall()
+app = Flask(__name__, static_folder=BASE_DIR, static_url_path='')
+CORS(app) 
 
-            data = []
-            for i in row:
-                data.append({
-                    "id": i[0],
-                    "label": i[1],
-                    "sound": i[2],
-                    "macro": i[3],
-                    "url": i[4],
-                    "app": i[5]
-                })
-        return data
 
-    def create_table_if_not_exists(self, cur):
-        command = """CREATE TABLE IF NOT EXISTS DATA (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        label TEXT UNIQUE,
-        sound TEXT DEFAULT 'NONE',
-        macro TEXT DEFAULT 'NONE',
-        url TEXT DEFAULT 'NONE',
-        app TEXT DEFAULT 'NONE')"""
-        cur.execute(command)
+db = DB() 
 
-    def populate_default_data(self, cur, con):
-        print("Populating default table...")
-        values = [(f'button_{b}',) for b in range(1, self.buttons + 1)]
-        default_insert = f"""INSERT OR IGNORE INTO DATA (label) VALUES (?)"""
-        cur.executemany(default_insert, values)
-        con.commit()
-
-db = DB()
-
-# Importante: Permitir CORS se o seu Pyodide estiver rodando em outra porta
-@app.after_request
-def add_cors_headers(response):
-    response.headers.add('Access-Control-Allow-Origin', '*')
-    response.headers.add('Access-Control-Allow-Headers', 'Content-Type')
-    return response
+@app.route("/")
+def index():
+    
+    return send_from_directory(BASE_DIR, 'index.html')
 
 @app.route("/data")
 def data():
-    # Retorna usando jsonify para garantir o cabeçalho application/json correto
-    return jsonify(db.get_data())
+    dados_do_banco = db.get_data() 
+    return jsonify(dados_do_banco)
+
+
+@app.route("/save", methods=["POST"])
+def save_data():
+    try:
+        updated_data = request.json # This gets the json_payload from your frontend
+        
+        # We call the save method in your DB class
+        db.save_all_binds(updated_data) 
+        
+        return jsonify({"status": "success"}), 200
+    except Exception as e:
+        print(f"Error saving to DB: {e}")
+
+@app.route('/<path:filename>')
+def serve_static(filename):
+    return send_from_directory(BASE_DIR, filename)
 
 if __name__ == '__main__':
-    app.run(debug=True, port=5000)
+    app.run(host='0.0.0.0', port=5000, debug=True)
